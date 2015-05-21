@@ -1,0 +1,40 @@
+<?php
+	$token = $_GET['token'];
+	$user = $_GET['user'];
+	
+	$method = "load".ucfirst($user)."SessionByToken";
+	$bdd->$method($token);
+	$values = $bdd->getSqlReturn();
+?>
+
+
+<form action="guest_submit" method="get" id="form" accept-charset="utf-8">
+	<input type="<?php echo $formInput ?>" name="id" value="<?php echo $values['id'] ?>" id="id" />
+	<input type="<?php echo $formInput ?>" name="user" value="<?php echo $user ?>" id="user" />
+	<input type="<?php echo $formInput ?>" name="lat" value="" id="lat" />
+	<input type="<?php echo $formInput ?>" name="lng" value="" id="lng" />
+	<input type="<?php echo $formInput ?>" name="myspeed" value="" id="myspeed" />
+</form>
+
+<input type="<?php echo $input ?>" name="tracedLat" value="<?php echo $values['lat'] ?>" id="tracedLat" />
+<input type="<?php echo $input ?>" name="tracedLng" value="<?php echo $values['lng'] ?>" id="tracedLng" />
+<input type="<?php echo $input ?>" name="updated_at" value="<?php echo $values['updated_at'] ?>" id="updated_at" />
+<input type="<?php echo $input ?>" name="angleSin" value="" id="angleSin" />
+<input type="<?php echo $input ?>" name="heading" value="" id="heading" />
+<input type="<?php echo $input ?>" name="angleRelatif" value="" id="angleRelatif" />
+<div id="info"></div>
+
+<div id="wait"></div>
+
+<div id="bg_arrow">
+	<div id="arrow">
+		<img src="img/up-white-arrow-hi.png">
+	</div>
+</div>
+<center>
+	<span id="distance"></span>
+</center>
+
+
+<script type="text/javascript" language="Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/trace.js"></script>

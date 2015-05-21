@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule h-([a-z0-9]+)  index.php?page=session&user=host&token=$1 [l]
+RewriteRule g-([a-z0-9]+)  index.php?page=session&user=guest&token=$1 [l]
+RewriteRule ([a-zA-Z]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)  index.php?page=$1&user=$2&token=$3
